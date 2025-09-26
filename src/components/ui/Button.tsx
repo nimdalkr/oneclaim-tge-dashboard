@@ -1,7 +1,6 @@
 'use client'
 
 import { ButtonHTMLAttributes, forwardRef } from 'react'
-import { motion } from 'framer-motion'
 import { clsx } from 'clsx'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -36,7 +35,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     }
 
     return (
-      <motion.button
+      <button
         ref={ref}
         className={clsx(
           baseStyles,
@@ -45,8 +44,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           className
         )}
         disabled={disabled || isLoading}
-        whileHover={{ scale: disabled || isLoading ? 1 : 1.02 }}
-        whileTap={{ scale: disabled || isLoading ? 1 : 0.98 }}
         {...props}
       >
         {isLoading ? (
@@ -58,7 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             Loading...
           </>
         ) : children}
-      </motion.button>
+      </button>
     )
   }
 )

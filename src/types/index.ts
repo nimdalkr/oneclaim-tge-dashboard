@@ -110,6 +110,7 @@ export interface TGESummaryData {
 export interface StakedPosition {
   id: string
   airdropId: string
+  projectName: string
   tokenSymbol: string
   tokenIcon: string
   chainName: string
@@ -126,6 +127,7 @@ export interface StakedPosition {
 export interface ClaimedAirdrop {
   id: string
   airdropId: string
+  projectName: string
   tokenSymbol: string
   tokenIcon: string
   chainName: string

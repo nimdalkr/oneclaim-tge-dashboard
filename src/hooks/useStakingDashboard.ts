@@ -173,6 +173,7 @@ export const useStakingDashboard = () => {
         {
           id: `reward-claim-${Date.now()}`,
           airdropId: position.airdropId,
+          projectName: position.projectName,
           tokenSymbol: position.tokenSymbol,
           tokenIcon: position.tokenIcon,
           chainName: position.chainName,

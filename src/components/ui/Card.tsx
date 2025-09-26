@@ -10,27 +10,18 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
   ({ className, hoverable = false, children, ...props }, ref) => {
-    const Component = hoverable ? motion.div : 'div'
-
-    const motionProps = hoverable
-      ? {
-          whileHover: { y: -2, scale: 1.01 },
-          transition: { duration: 0.2 }
-        }
-      : {}
-
     return (
-      <Component
+      <div
         ref={ref}
         className={clsx(
           'rounded-lg border bg-card text-card-foreground shadow-sm',
+          hoverable && 'hover:shadow-md transition-shadow',
           className
         )}
-        {...(hoverable ? motionProps : {})}
         {...props}
       >
         {children}
-      </Component>
+      </div>
     )
   }
 )
