@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme as default - ENSO style */
+    --background: 240 10% 3.9%; /* Very dark background - zinc-950 */
+    --foreground: 240 5.9% 90%; /* Off-white text - zinc-100 */
+    --card: 240 10% 6%; /* Slightly lighter dark - zinc-900 */
+    --card-foreground: 240 5.9% 90%;
+    --popover: 240 10% 6%;
+    --popover-foreground: 240 5.9% 90%;
+    --primary: 195 100% 60%; /* ENSO cyan primary */
+    --primary-foreground: 240 10% 3.9%;
+    --secondary: 240 4.8% 15%; /* zinc-800 */
+    --secondary-foreground: 240 5.9% 90%;
+    --muted: 240 4.8% 15%;
+    --muted-foreground: 240 3.8% 63%; /* zinc-400 */
+    --accent: 240 4.8% 15%;
+    --accent-foreground: 240 5.9% 90%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 240 5.9% 90%;
+    --border: 240 5.9% 11%; /* zinc-800 border */
+    --input: 240 5.9% 11%;
+    --ring: 195 100% 60%; /* ENSO cyan ring */
+    --radius: 0.5rem;
+  }
+
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 195 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 195 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* ENSO Brand Gradients */
+  .enso-gradient {
+    background: linear-gradient(135deg, #33D4FF 0%, #7F5BFF 50%, #FF70A6 100%);
+  }
+
+  .enso-gradient-hover {
+    background: linear-gradient(135deg, #4AE0FF 0%, #9668FF 50%, #FF7BB3 100%);
+  }
+
+  .enso-text-gradient {
+    background: linear-gradient(135deg, #33D4FF 0%, #7F5BFF 50%, #FF70A6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .enso-border-gradient {
+    background: linear-gradient(135deg, #33D4FF 0%, #7F5BFF 50%, #FF70A6 100%);
+    padding: 1px;
+    border-radius: 0.5rem;
+  }
+
+  .enso-border-gradient > * {
+    background: hsl(var(--card));
+    border-radius: calc(0.5rem - 1px);
+  }
+
+  /* Legacy chain gradients - updated with ENSO colors */
+  .chain-gradient-zk {
+    background: linear-gradient(135deg, #7F5BFF 0%, #FF70A6 100%);
+  }
+
+  .chain-gradient-base {
+    background: linear-gradient(135deg, #33D4FF 0%, #7F5BFF 100%);
+  }
+
+  .chain-gradient-linea {
+    background: linear-gradient(135deg, #33D4FF 0%, #FF70A6 100%);
+  }
+
+  /* Glow effects */
+  .enso-glow {
+    box-shadow: 0 0 20px rgba(51, 212, 255, 0.3), 0 0 40px rgba(255, 112, 166, 0.2);
+  }
+
+  .enso-glow-hover:hover {
+    box-shadow: 0 0 30px rgba(51, 212, 255, 0.4), 0 0 60px rgba(255, 112, 166, 0.3);
+  }
+}
