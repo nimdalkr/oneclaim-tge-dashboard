@@ -1,200 +1,226 @@
-# 🚀 ClaimBoard - 크로스체인 에어드롭 클레임 대시보드
+# OneClaim - TGE Token Dashboard
 
-ClaimBoard는 여러 블록체인의 에어드롭을 한 번에 확인하고 클레임할 수 있는 모던한 웹 대시보드입니다. Next.js 14와 TypeScript로 구축되었으며, Framer Motion으로 부드러운 애니메이션을 제공합니다.
+OneClaim is a modern web dashboard for claiming and staking TGE (Token Generation Event) tokens across multiple blockchains. Built with Next.js 14 and TypeScript, featuring smooth animations powered by Framer Motion.
 
-## ✨ 주요 기능
+## Key Features
 
-- **지갑 연결**: 모의 지갑 연결 플로우
-- **멀티체인 지원**: zkSync, Base, Linea 체인
-- **클레임 관리**: 체인별 개별 선택 및 일괄 클레임
-- **실시간 요약**: 클레임 가능한 토큰 가치와 가스비 계산
-- **피드백 시스템**: Toast 알림으로 클레임 결과 표시
-- **반응형 디자인**: 모바일/데스크톱 완벽 지원
-- **부드러운 애니메이션**: Framer Motion 기반 인터렉션
+- **Wallet Connection**: Mock wallet connection flow with multiple wallet support
+- **Multi-chain Support**: Support for various blockchain networks
+- **Claim Management**: Individual selection and batch claiming by chain
+- **Staking Integration**: Direct staking options with APR calculations
+- **Real-time Summary**: Claimable token value and gas fee calculations
+- **Feedback System**: Toast notifications for claim results
+- **Responsive Design**: Perfect support for mobile/desktop
+- **Smooth Animations**: Framer Motion based interactions
+- **Activity Dashboard**: Portfolio tracking and wallet analytics
 
-## 🛠️ 기술 스택
+## Tech Stack
 
-- **프레임워크**: Next.js 14 (App Router)
-- **언어**: TypeScript
-- **스타일링**: Tailwind CSS
-- **애니메이션**: Framer Motion
-- **아이콘**: Lucide React
-- **상태 관리**: React Hooks
-- **빌드 도구**: Next.js 내장 Turbopack
+- **Framework**: Next.js 14 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Icons**: Lucide React
+- **State Management**: React Hooks
+- **Build Tool**: Next.js built-in Turbopack
 
-## 📁 프로젝트 구조
+## Project Structure
 
 ```
 claimboard/
 ├── src/
-│   ├── app/                    # Next.js App Router 페이지
-│   │   ├── globals.css         # 글로벌 스타일
-│   │   ├── layout.tsx          # 루트 레이아웃
-│   │   └── page.tsx            # 메인 대시보드 페이지
-│   ├── components/             # 재사용 가능한 컴포넌트
-│   │   ├── layout/             # 레이아웃 컴포넌트
+│   ├── app/                         # Next.js App Router pages
+│   │   ├── globals.css              # Global styles
+│   │   ├── layout.tsx               # Root layout
+│   │   └── page.tsx                 # Main dashboard page
+│   ├── components/                  # Reusable components
+│   │   ├── dashboard/               # Dashboard components
+│   │   │   ├── AirdropActivityDashboard.tsx
+│   │   │   └── StakingDashboard.tsx
+│   │   ├── layout/                  # Layout components
 │   │   │   ├── WalletConnect.tsx
-│   │   │   ├── ClaimChainCard.tsx
-│   │   │   ├── ClaimSummary.tsx
-│   │   │   └── ClaimButton.tsx
-│   │   └── ui/                 # 기본 UI 컴포넌트
+│   │   │   ├── TGEAirdropCard.tsx
+│   │   │   ├── TGESummary.tsx
+│   │   │   └── TGEClaimButton.tsx
+│   │   └── ui/                      # Basic UI components
 │   │       ├── Button.tsx
 │   │       ├── Card.tsx
 │   │       ├── Checkbox.tsx
 │   │       └── Toast.tsx
-│   ├── hooks/                  # 커스텀 React 훅
+│   ├── hooks/                       # Custom React hooks
 │   │   ├── useWallet.ts
-│   │   ├── useClaim.ts
+│   │   ├── useClaimAndStake.ts
 │   │   └── useToast.ts
-│   ├── types/                  # TypeScript 타입 정의
+│   ├── types/                       # TypeScript type definitions
 │   │   └── index.ts
-│   ├── data/                   # 모의 데이터
-│   │   └── mockData.ts
-│   └── lib/                    # 유틸리티 함수
+│   ├── data/                        # Mock data
+│   │   └── mockAirdrops.ts
+│   └── lib/                         # Utility functions
 │       └── utils.ts
-├── public/                     # 정적 자산
-└── ...설정 파일들
+├── public/                          # Static assets
+│   └── logos/                       # Token and wallet logos
+└── ...configuration files
 ```
 
-## 🚀 빠른 시작
+## Quick Start
 
-### 1. 의존성 설치
+### 1. Install Dependencies
 
 ```bash
 npm install
-# 또는
+# or
 yarn install
-# 또는
+# or
 pnpm install
 ```
 
-### 2. 개발 서버 실행
+### 2. Run Development Server
 
 ```bash
 npm run dev
-# 또는
+# or
 yarn dev
-# 또는
+# or
 pnpm dev
 ```
 
-### 3. 브라우저에서 확인
+### 3. Open in Browser
 
-[http://localhost:3000](http://localhost:3000)을 열어서 애플리케이션을 확인하세요.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## 🎯 사용 방법
+## Usage Guide
 
-1. **지갑 연결**: 우측 상단의 "지갑 연결" 버튼을 클릭
-2. **체인 선택**: 클레임하고 싶은 체인들을 선택
-3. **요약 확인**: 우측에서 총 수익과 가스비를 확인
-4. **클레임 실행**: "전체 클레임" 버튼으로 선택한 체인들을 일괄 처리
-5. **결과 확인**: Toast 알림과 결과 카드로 클레임 상태 확인
+1. **Connect Wallet**: Click the "Connect Wallet" button in the top right
+2. **Select Tokens**: Choose TGE tokens you want to claim
+3. **Configure Staking**: Set staking options for each token (optional)
+4. **Review Summary**: Check total value and gas fees on the right panel
+5. **Execute Claim**: Click "Claim All" button to process selected tokens
+6. **Check Results**: View claim status through toast notifications and result cards
 
-## 🎨 주요 컴포넌트
+## Main Features
 
-### WalletConnect
-- 지갑 연결/해제 기능
-- 연결된 주소 표시
-- 로딩 상태 관리
+### TGE Token Management
+- Token claim interface with staking options
+- APR calculations for different lock periods
+- Real-time value tracking
 
-### ClaimChainCard
-- 체인별 클레임 가능 정보 표시
-- 토큰 수량과 USD 가치 표시
-- 체크박스로 선택/해제
+### Activity Dashboard
+- Multi-wallet portfolio overview
+- Token holdings with price tracking
+- Connected wallet management
 
-### ClaimSummary
-- 선택된 체인 요약
-- 총 수익과 가스비 계산
-- 순 수익 계산
+### Staking Dashboard
+- Active staking positions
+- Reward calculations and tracking
+- Position management interface
 
-### ClaimButton
-- 일괄 클레임 실행
-- 프로그레스 표시
-- 클레임 결과 피드백
+## Key Components
 
-## 🔧 빌드 및 배포
+### TGEAirdropCard
+- Individual TGE token claim interface
+- Staking option configuration
+- Token amount and value display
 
-### 프로덕션 빌드
+### AirdropActivityDashboard
+- Portfolio overview with statistics
+- Multi-wallet support
+- Token holdings visualization
+
+### StakingDashboard
+- Active staking positions display
+- Reward tracking and calculations
+- Position management tools
+
+## Build and Deployment
+
+### Production Build
 ```bash
 npm run build
 ```
 
-### 프로덕션 서버 실행
+### Production Server
 ```bash
 npm run start
 ```
 
-### 타입 체크
+### Type Check
 ```bash
 npx tsc --noEmit
 ```
 
-### 린팅
+### Linting
 ```bash
 npm run lint
 ```
 
-## 🎭 데모 데이터
+## Demo Data
 
-이 프로젝트는 실제 블록체인과 연결되지 않으며, 다음과 같은 모의 데이터를 사용합니다:
+This project is not connected to actual blockchains and uses mock data:
 
-- **zkSync**: 120 ZK 토큰 ($240.50)
-- **Base**: 0 BASE 토큰 ($0.00) - 클레임 불가
-- **Linea**: 45 LIN 토큰 ($85.30)
+- **ENSO**: 85 tokens (claimable)
+- **Plasma**: 500 tokens (already staked)
+- **Allora Network**: 230 tokens (claimable)
+- **Mira Network**: Not available
+- **Opensea**: 120 tokens (claimable)
 
-클레임 시뮬레이션은 실제 네트워크 지연과 성공/실패율을 모방합니다.
+Claim simulation mimics actual network delays and success/failure rates.
 
-## 🎨 커스터마이징
+## Customization
 
-### 체인 추가
-`src/data/mockData.ts`에서 새로운 체인을 추가할 수 있습니다:
+### Adding New Tokens
+Add new tokens in `src/data/mockAirdrops.ts`:
 
 ```typescript
-export const SUPPORTED_CHAINS: Chain[] = [
-  // 기존 체인들...
+export const mockAirdrops: MockAirdrop[] = [
+  // existing tokens...
   {
-    id: 'arbitrum',
-    name: 'Arbitrum',
-    symbol: 'ARB',
-    logo: '🔴',
-    color: '#12D8FA',
-    gradientClass: 'bg-gradient-to-r from-blue-400 to-cyan-400'
+    id: 'new-token',
+    projectName: 'New Project',
+    chain: 'Ethereum',
+    token: '$NEW',
+    amount: 100,
+    claimable: true,
+    stakingOptions: [
+      { duration: '1M', apr: 5, displayName: '1 month' },
+      { duration: '3M', apr: 10, displayName: '3 months' },
+      { duration: '6M', apr: 15, displayName: '6 months' }
+    ]
   }
 ]
 ```
 
-### 스타일 수정
-Tailwind CSS 클래스를 수정하거나 `src/app/globals.css`에서 커스텀 CSS를 추가할 수 있습니다.
+### Style Modifications
+Modify Tailwind CSS classes or add custom CSS in `src/app/globals.css`.
 
-## 📱 반응형 디자인
+## Responsive Design
 
-- **모바일**: 단일 컬럼 레이아웃
-- **태블릿**: 2컬럼 그리드
-- **데스크톱**: 3컬럼 그리드 + 사이드바
+- **Mobile**: Single column layout
+- **Tablet**: 2-column grid
+- **Desktop**: Multi-column grid with sidebar
 
-## 🚨 주의사항
+## Important Notes
 
-⚠️ **이 프로젝트는 데모/프로토타입 목적으로만 사용하세요**
+**This project is for demo/prototype purposes only**
 
-- 실제 블록체인과 연결되지 않습니다
-- 지갑 연결은 모의 기능입니다
-- 트랜잭션 해시는 가짜입니다
-- 프로덕션 환경에서 사용하려면 실제 web3 라이브러리 통합이 필요합니다
+- Not connected to actual blockchains
+- Wallet connection is mock functionality
+- Transaction hashes are fake
+- Production use requires actual web3 library integration
 
-## 🤝 기여하기
+## Contributing
 
-1. 이 저장소를 포크하세요
-2. 기능 브랜치를 만드세요 (`git checkout -b feature/amazing-feature`)
-3. 변경사항을 커밋하세요 (`git commit -m 'Add amazing feature'`)
-4. 브랜치에 푸시하세요 (`git push origin feature/amazing-feature`)
-5. Pull Request를 열어주세요
+1. Fork this repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## 📄 라이선스
+## License
 
-이 프로젝트는 MIT 라이선스 하에 있습니다. 자세한 내용은 `LICENSE` 파일을 참조하세요.
+This project is under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-**만든이**: Claude Code
-**버전**: 1.0.0
-**마지막 업데이트**: 2024년 12월
+**Created by**: Claude Code
+**Version**: 1.0.0
+**Last Updated**: December 2024
