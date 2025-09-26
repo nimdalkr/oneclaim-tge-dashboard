@@ -221,6 +221,6 @@ This project is under the MIT License. See the `LICENSE` file for details.
 
 ---
 
-**Created by**: Claude Code
+**Created by**: Nimdal
 **Version**: 1.0.0
 **Last Updated**: December 2024
